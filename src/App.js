@@ -8,18 +8,25 @@ function App() {
     {id: 3, text: 'Comment Three'},
   ]
 
+  const loading = false;
+  const showComments = true;
+
+  if (loading) return <h1>Loading...</h1>
+
   return (
     <div className='container'>
       <h1>{title.toUpperCase()}</h1>
       <p>{body}</p>
-      <div className='comments'>
-        <h3>Comments ({comments.length})</h3>
-        <ul>
-          {comments.map((comment, index) => (
-            <li key={index}>{comment.text}</li>
-          ))}
-        </ul>
-      </div>
+      {showComments && (
+        <div className='comments'>
+          <h3>Comments ({comments.length})</h3>
+          <ul>
+            {comments.map((comment, index) => (
+              <li key={index}>{comment.text}</li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 }
